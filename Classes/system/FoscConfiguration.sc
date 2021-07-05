@@ -4,7 +4,7 @@
 FoscConfiguration.getLilypondVersionString
 ------------------------------------------------------------------------------------------------------------ */
 FoscConfiguration {
-    classvar lilypondExecutablePath="lilypond";
+    classvar lilypondExecutablePath="lilypond", <>foscOutputDirectoryPath, <>foscOutputSubdirPath = "fosc-output";
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // INIT
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,13 +69,13 @@ FoscConfiguration {
     • *foscOutputDirectory
     -------------------------------------------------------------------------------------------------------- */
     *foscOutputDirectory {
-        ^(Platform.userConfigDir ++ "/fosc-output");
+        ^foscOutputDirectoryPath ++ foscOutputSubdirPath;
     }
     /* --------------------------------------------------------------------------------------------------------
     • *foscRootDirectory
     -------------------------------------------------------------------------------------------------------- */
     *foscRootDirectory {
-        ^(Platform.userExtensionDir ++ "/fosc");
+        ^(Quarks.folder ++ "/fosc");
     }
     /* --------------------------------------------------------------------------------------------------------
     • *foscStylesheetDirectory
