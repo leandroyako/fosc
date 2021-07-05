@@ -3,6 +3,8 @@
   \summary: "Fosc is a SuperCollider API for generating musical notation in LilyPond.",
   \author: "Newton Armstrong",
   \version: "0.1.0",
-  \license: "GPL-3.0-or-later",
-  \dependencies: []
+  schelp: "Fosc",
+  \license: "GPL-3.0",
+  \dependencies: [],
+  \ext_dependency, "lilypond"
 )

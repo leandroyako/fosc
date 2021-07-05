@@ -78,7 +78,7 @@ FoscConfiguration.getLilypondVersionString;
 a = FoscNote(60, 1/4);
 a.show;
 ```
-![](./docs/img/note.png)
+![](./HelpSource/Guides//img/note.png)
 
 
 <br>Display some notes in sequence.
@@ -86,7 +86,7 @@ a.show;
 a = FoscVoice([FoscNote('C4', 1/4), FoscNote('D4', 1/8)]);
 a.show;
 ```
-![](./docs/img/notes.png)
+![](./HelpSource/Guides//img/notes.png)
 
 <br>View LilyPond output in the Post window.
 ```supercollider
@@ -109,7 +109,7 @@ b = FoscVoice([FoscNote('Bb3', 1/8), FoscNote('Ab3', 1/4)]);
 c = FoscScore([FoscStaff([a]), FoscStaff([b])]);
 c.show;
 ```
-![](./docs/img/score.png)
+![](./HelpSource/Guides//img/score.png)
 
 
 ### <br>2. Indicators
@@ -121,7 +121,7 @@ a.attach(FoscArticulation('>'));
 a.attach(FoscDynamic('f'));
 a.show;
 ```
-![](./docs/img/indicators.png)
+![](./HelpSource/Guides//img/indicators.png)
 
 
 ### <br>3. Spanners
@@ -133,7 +133,7 @@ a.selectLeaves.slur;
 a.selectLeaves.hairpin('p < f');
 a.show;
 ```
-![](./docs/img/spanners.png)
+![](./HelpSource/Guides//img/spanners.png)
 
 
 ### <br>4. Tweaks, overrides, settings
@@ -144,7 +144,7 @@ a = FoscNote(60, 1/4);
 tweak(a.noteHead).style = 'harmonic';
 a.show;
 ```
-![](./docs/img/tweak-notehead.png)
+![](./HelpSource/Guides//img/tweak-notehead.png)
 
 <br>Override LilyPond Grob properties.
 ```supercollider
@@ -152,7 +152,7 @@ a = FoscNote(60, 1/4);
 override(a).noteHead.color = 'red';
 a.show;
 ```
-![](./docs/img/override-notehead.png)
+![](./HelpSource/Guides//img/override-notehead.png)
 
 <br>Set LilyPond Context properties.
 ```supercollider
@@ -161,7 +161,7 @@ set(a[0]).instrumentName = FoscMarkup("Violin");
 set(a).proportionalNotationDuration = FoscSchemeMoment(#[1,64]);
 a.show;
 ```
-![](./docs/img/set-score-properties.png)
+![](./HelpSource/Guides//img/set-score-properties.png)
 
 
 ### <br>5. Generate music with FoscLeafMaker
@@ -171,49 +171,49 @@ a.show;
 m = FoscLeafMaker().(pitches: #[60,64,"G4",'Bb4'], durations: [1/4]);
 m.show;
 ```
-![](./docs/img/leaf-maker-1.png)
+![](./HelpSource/Guides//img/leaf-maker-1.png)
 
 <br>Array elements in 'pitches' result in chords.
 ```supercollider
 m = FoscLeafMaker().(pitches: #[[60,64,67],['Eb4','G4','Bb4']], durations: [1/2]);
 m.show;
 ```
-![](./docs/img/leaf-maker-2.png)
+![](./HelpSource/Guides//img/leaf-maker-2.png)
 
 <br>Nil-valued elements in 'pitches' result in rests.
 ```supercollider
 m = FoscLeafMaker().(pitches: nil, durations: 1/4 ! 4);
 m.show;
 ```
-![](./docs/img/leaf-maker-3.png)
+![](./HelpSource/Guides//img/leaf-maker-3.png)
 
 <br>Values passed to 'pitches' can be mixed and matched.
 ```supercollider
 m = FoscLeafMaker().(pitches: #[[60,64,67],nil,'Eb4','Bb4'], durations: [1/4]);
 m.show;
 ```
-![](./docs/img/leaf-maker-4.png)
+![](./HelpSource/Guides//img/leaf-maker-4.png)
 
 <br>Pitches are repeated cyclically when the length of 'pitches' is less than the length of 'durations'.
 ```supercollider
 m = FoscLeafMaker().(pitches: #[72,71], durations: [3/8,1/8,2/8,2/8]);
 m.show;
 ```
-![](./docs/img/leaf-maker-5.png)
+![](./HelpSource/Guides//img/leaf-maker-5.png)
 
 <br>Durations are repeated cyclically when the length of 'durations' is less than the length of 'pitches'.
 ```supercollider
 m = FoscLeafMaker().(pitches: #[72,74,76,77], durations: [3/8,1/8]);
 m.show;
 ```
-![](./docs/img/leaf-maker-6.png)
+![](./HelpSource/Guides//img/leaf-maker-6.png)
 
 <br>Elements in 'durations' with non-power-of-two denominators result in tuplet-nested leaves.
 ```supercollider
 m = FoscLeafMaker().(pitches: #[60,62,64,65], durations: [1/4, 1/12, 1/6, 1/2]);
 m.show;
 ```
-![](./docs/img/leaf-maker-7.png)
+![](./HelpSource/Guides//img/leaf-maker-7.png)
 
 
 ### <br>6. Generate rhythms with FoscRhythmMaker
@@ -224,7 +224,7 @@ a = FoscRhythmMaker();
 a.(divisions: [2/16,3/16,5/16], ratios: #[[3,1],[3,2],[4,3]]);
 a.show;
 ```
-![](./docs/img/rhythm-maker-1.png)
+![](./HelpSource/Guides//img/rhythm-maker-1.png)
 
 <br>Negative values in 'divisions' result in rests.
 ```supercollider
@@ -232,7 +232,7 @@ a = FoscRhythmMaker();
 a.(divisions: [2/16,3/16,5/16], ratios: #[[-3,1],[3,2],[4,-3]]);
 a.show;
 ```
-![](./docs/img/rhythm-maker-2.png)
+![](./HelpSource/Guides//img/rhythm-maker-2.png)
 
 <br>Add the output of a FoscRhythmMaker to a FoscStaff and rewrite pitches.
 ```supercollider
@@ -242,7 +242,7 @@ c = FoscStaff(b);
 mutate(c).rewritePitches(#[60,62,64,65]);
 c.show;
 ```
-![](./docs/img/rhythm-maker-3.png)
+![](./HelpSource/Guides//img/rhythm-maker-3.png)
 
 <br>Rhythm cells are repeated cyclically when the length of 'divisions' is less than the length of 'ratios'.
 ```supercollider
@@ -250,7 +250,7 @@ a = FoscRhythmMaker();
 a.(divisions: [1/4], ratios: #[1,1,1,1,1] ! 4);
 a.show;
 ```
-![](./docs/img/rhythm-maker-4.png)
+![](./HelpSource/Guides//img/rhythm-maker-4.png)
 
 <br>Rhythm cells are repeated cyclically when the length of 'ratios' is less than the length of 'divisions'.
 ```supercollider
@@ -258,7 +258,7 @@ a = FoscRhythmMaker();
 a.(divisions: 1/4 ! 4, ratios: #[[1,1,1,1,1]]);
 a.show;
 ```
-![](./docs/img/rhythm-maker-5.png)
+![](./HelpSource/Guides//img/rhythm-maker-5.png)
 
 <br>Apply a silence mask.
 ```supercollider
@@ -267,7 +267,7 @@ a = FoscRhythmMaker();
 a.(divisions: 1/4 ! 4, ratios: #[[1,1,1,1,1]], masks: [m]);
 a.show;
 ```
-![](./docs/img/rhythm-maker-6.png)
+![](./HelpSource/Guides//img/rhythm-maker-6.png)
 
 <br>Apply a sustain mask.
 ```supercollider
@@ -276,7 +276,7 @@ a = FoscRhythmMaker();
 a.(divisions: 1/4 ! 4, ratios: #[[1,1,1,1,1]], masks: [m]);
 a.show;
 ```
-![](./docs/img/rhythm-maker-7.png)
+![](./HelpSource/Guides//img/rhythm-maker-7.png)
 
 <br>Apply a sustain mask and fuse leaves between successive onsets.
 ```supercollider
@@ -285,7 +285,7 @@ a = FoscRhythmMaker();
 a.(divisions: 1/4 ! 4, ratios: #[[1,1,1,1,1]], masks: [m]);
 a.show;
 ```
-![](./docs/img/rhythm-maker-8.png)
+![](./HelpSource/Guides//img/rhythm-maker-8.png)
 
 <br>Apply a sustain mask, fuse leaves, and apply formatting rules with a FoscTupletSpecifier.
 ```supercollider
@@ -295,7 +295,7 @@ a = FoscRhythmMaker(tupletSpecifier: t);
 a.(divisions: 1/4 ! 4, ratios: #[[1,1,1,1,1]], masks: [m]);
 a.show;
 ```
-![](./docs/img/rhythm-maker-9.png)
+![](./HelpSource/Guides//img/rhythm-maker-9.png)
 
 
 ### <br>7. Selections
@@ -347,7 +347,7 @@ b = a.selectLeaves(pitched: true);
 b.do { |each| each.attach(FoscArticulation('>')) };
 a.show;
 ```
-![](./docs/img/selections-1.png)
+![](./HelpSource/Guides//img/selections-1.png)
 
 
 ### <br>8. Iteration
@@ -377,7 +377,7 @@ a = FoscStaff(FoscLeafMaker().(#[nil,62,64,65,67,69,71,72], [1/8]));
 a.doComponents({ |note| note.attach(FoscArticulation('>')) }, prototype: FoscNote);
 a.show;
 ```
-![](./docs/img/iteration-1.png)
+![](./HelpSource/Guides//img/iteration-1.png)
 
 <br>Iterate over pitched logical ties.
 ```supercollider
@@ -388,7 +388,7 @@ tie(m[4..]);
 a.doLogicalTies({ |each| each[0].attach(FoscArticulation('>')) }, pitched: true);
 a.show;
 ```
-![](./docs/img/iteration-2.png)
+![](./HelpSource/Guides//img/iteration-2.png)
 
 <br>Iterate over runs, attach slur to each run.
 ```supercollider
@@ -396,7 +396,7 @@ a = FoscStaff(FoscLeafMaker().(#[60,62,64,nil,65,nil,67,69], [1/8]));
 a.doRuns { |run| if (run.size > 1) { run.slur } };
 a.show;
 ```
-![](./docs/img/iteration-3.png)
+![](./HelpSource/Guides//img/iteration-3.png)
 
 
 ## <br>License
