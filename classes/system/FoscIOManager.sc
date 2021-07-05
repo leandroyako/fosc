@@ -81,8 +81,8 @@ FoscIOManager : FoscObject {
             nextNumber = 1;
             result = "0001.%".format(extension);
         } {
-            lastNumber = lastOutput.splitext[0].interpret;
-            nextNumber = lastNumber + 1;
+            lastNumber = lastOutput.split($.)[0].interpret;
+			nextNumber = lastNumber + 1;
             result = "%.%".format(nextNumber.asDigits(10, 4).join, extension);
         };
         if (nextNumber > 9000) {
