@@ -106,11 +106,30 @@ FoscPersistenceManager : FoscObject {
     /* --------------------------------------------------------------------------------------------------------
     • asSVG
 
-    lilypond -dbackend=svg -dcrop file.ly
+    Persists client as SVG.
+
+    Autogenerates file path when 'lyPath' is nil.
+
+    Returns output path.
+
+    If 'clean' is true, ly file is deleted.
+
+	If 'crop' is true, generates cropped file at 'lyPath' ++ '.cropped.svg'
+
+    a = FoscNote(60, 1/4);
+    b = a.write.asSVG;
     -------------------------------------------------------------------------------------------------------- */
     asSVG { |lyPath, outputPath, illustrateFunction, crop=true, clean=true ... args|
-        // if (crop) { add "-dcrop" to flags string };
-        ^this.notYetImplemented(thisMethod);
+		var flags, success, outputPathCropped;
+        if (illustrateFunction.isNil) { assert(client.respondsTo('illustrate')) };
+        lyPath = this.asLY(lyPath, illustrateFunction, *args);
+        outputPath = outputPath ?? { lyPath.splitext[0] };
+		flags = "-dbackend=svg";
+ 		if (crop) { flags = flags + "-dcrop"};
+		success = FoscIOManager.runLilypond(lyPath, flags, outputPath.shellQuote);
+        if (success && clean) { File.delete(lyPath) };
+        outputPath = (outputPath ++ ".svg").shellQuote;
+        ^[outputPath, success];
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////
     // PRIVATE INSTANCE PROPERTIES
